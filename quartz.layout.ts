@@ -24,6 +24,15 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
+    Component.ConditionalRender({
+      component: Component.RecentNotes({
+        title: "최근 포스트",
+        limit: 5,
+        filter: (page) => page.slug !== "index",
+        showTags: false,
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
   ],
   left: [
     Component.PageTitle(),
@@ -38,7 +47,9 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      title: "목차",
+    }),
   ],
   right: [
     Component.Graph(),
@@ -62,7 +73,9 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      title: "목차",
+    }),
   ],
   right: [],
 }

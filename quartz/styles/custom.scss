@@ -1,3 +1,124 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// Contest Engineer Theme - Custom CSS
+// Professional theme optimized for technical content and code readability
+
+// Code blocks enhancement
+pre {
+  border-left: 3px solid var(--secondary);
+  background: var(--lightgray) !important;
+  border-radius: 6px;
+}
+
+// Links with better contrast
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: var(--tertiary);
+    text-decoration: underline;
+  }
+}
+
+// Headers with accent - only h1 and h2 have border
+h1, h2 {
+  color: var(--dark);
+  border-bottom: 1px solid var(--lightgray);
+  padding-bottom: 0.3em;
+  margin-top: 1.5em;
+}
+
+h3, h4, h5, h6 {
+  color: var(--dark);
+  margin-top: 1.5em;
+}
+
+// Table styling for algorithm complexity tables
+table {
+  border-collapse: collapse;
+  width: 100%;
+  
+  th {
+    background: var(--lightgray);
+    color: var(--dark);
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--lightgray);
+  }
+  
+  tr:hover {
+    background: var(--highlight);
+  }
+}
+
+// Better blockquotes for problem statements
+blockquote {
+  border-left: 4px solid var(--secondary);
+  background: var(--highlight);
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+// Tag styling for categories
+.tag {
+  background: var(--secondary);
+  color: var(--light);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  
+  &:hover {
+    background: var(--tertiary);
+  }
+}
+
+// Explorer file and folder icons
+.explorer-content {
+  // File items - add file icon
+  li:not(:has(.folder-outer)) > a {
+    position: relative;
+    padding-left: 1.5em;
+    
+    &::before {
+      content: "📄";
+      position: absolute;
+      left: 0;
+      font-size: 0.85em;
+    }
+  }
+  
+  // Folder items - add folder icon
+  .folder-container {
+    position: relative;
+    
+    & > div > button > span::before {
+      content: "📁";
+      margin-right: 0.4em;
+      font-size: 0.9em;
+    }
+    
+    & > div > a::before {
+      content: "📁";
+      margin-right: 0.4em;
+      font-size: 0.9em;
+    }
+  }
+  
+  // Alternative: Use different icons for different file types
+  li:not(:has(.folder-outer)) > a[href*=".md"]::before {
+    content: "📝"; // Markdown files
+  }
+  
+  // Indent adjustment for nested items
+  ul ul {
+    margin-left: 0.5em;
+  }
+}
